@@ -1,0 +1,18 @@
+#!/bin/bash
+TTY_USER=$(who | grep tty7 | cut -d ' ' -f 1)
+TTY_USER_ID=$(id -u $TTY_USER)
+
+case $1 in
+  -) sudo -u $TTY_USER XDG_RUNTIME_DIR=/run/user/$TTY_USER_ID pactl set-sink-volume @DEFAULT_SINK@ -5000
+     MESSAGE="vol down for me"
+  ;;
+  +) sudo -u $TTY_USER XDG_RUNTIME_DIR=/run/user/$TTY_USER_ID pactl set-sink-volume @DEFAULT_SINK@ +5000
+     MESSAGE="vol up for me"
+  ;;
+esac
+
+## LOGGING DEBUG ##
+#FILEDATE=`date +%F+%T`
+#LOGFILE=/var/log/volume_acpi.log
+#touch $LOGFILE
+#echo "$FILEDATE $MESSAGE" >> $LOGFILE

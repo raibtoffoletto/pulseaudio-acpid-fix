@@ -7,7 +7,7 @@ misbehavior after the computer comes back from sleep.
 + System using Pulseaudio
 + `sudo` and `systemd` installed
 + `acpid.service` up and running
-+ Terminal and `bash
++ Terminal and `bash`
 
 ## Instalation
 ```
